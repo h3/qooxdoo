@@ -35,7 +35,7 @@ qx.Bootstrap.define("qx.core.GlobalError",
     // Do not use the Environment class to keep the minimal
     // package size small [BUG #5068]
     if (qx.Bootstrap.DEBUG) {
-      qx.core.Assert.assertNotUndefined(exc);
+      //qx.core.Assert.assertNotUndefined(exc);
     }
 
     this.__failMessage = "GlobalError: " + (exc && exc.message ? exc.message : exc);
