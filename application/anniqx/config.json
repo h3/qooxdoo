@@ -1,0 +1,93 @@
+{
+  "let" :
+  {
+    "APPLICATION"  : "bom",
+    "QOOXDOO_PATH" : "../..",
+    "CACHE"        : "${TMPDIR}/qx${QOOXDOO_VERSION}/cache",
+    "ROOT"         : "."
+  },
+  
+  "default-job" : "build",
+
+  "jobs" :
+  {
+    "build" :
+    {
+      "log" : { 
+        "filter" : { "debug" : [ "generator.code.DependencyLoader.*" ] },
+        "dependencies" : { 
+          "include-transitive-load-deps" : false,
+          "force-fresh-deps" : true,
+          "type" : "using",
+          //"type" : "used-by",
+          //"format" : "txt",
+          "format" : "dot",
+          "dot" : { 
+            //"root" : "qx.Class"
+            "root" : "qx.bom.element.Animation"
+          }
+        }
+      },
+      /*
+      */
+
+      "config-warnings" : 
+      { 
+        "exclude" :
+        []
+      },
+ 
+      "library" :
+      [
+        {
+          "manifest" : "${QOOXDOO_PATH}/framework/Manifest.json"
+        }
+      ],
+
+      "cache" :
+      {
+        "compile"      : "${CACHE}",
+        "downloads"    : "${CACHE}/downloads",
+        "invalidate-on-tool-change" : true
+      },
+
+      "include" : 
+      [
+        "qx.bom.element.Animation"
+      ],
+      
+      "exclude" :
+      [],
+
+      "environment" :
+      {
+        "qx.debug" : false,
+        "qx.aspects" : false,
+        "qx.globalErrorHandling" : false,
+        "qx.theme" : null
+      },
+
+      "compile-options" :
+      {
+        "paths" :
+        {
+          "file" : "qx-bom.js",
+          "app-root" : "."
+        },
+        "uris" :
+        {
+          "script"   : ".",
+          "resource" : "."
+        },
+        "code" :
+        {
+          "format"   : true,
+          "optimize" : [ "statics", "variants"],
+          "except"   : []
+        }
+      },
+      
+      "compile" : { "type" : "build" }
+    }
+  }
+}
