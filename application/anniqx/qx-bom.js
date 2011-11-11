@@ -19,7 +19,7 @@ qx.$$packageData = {};
 
 qx.$$loader = {
   parts : {"boot":[0]},
-  packages : {"0":{"uris":["__out__:qx-bom.7016c03266e5.js"]}},
+  packages : {"0":{"uris":["__out__:qx-bom.ee92b5287f03.js"]}},
   urisBefore : [],
   cssBefore : [],
   boot : "boot",
@@ -545,6 +545,25 @@ this.el.style[qx.core.Environment.get("css.animation").name]="";
 this.el.$$animation.__playing=false;
 this.el.$$animation.__ended=true;
 }}}});
+qx.Bootstrap.define("qx.bom.client.CssTransform",{statics:{getSupport:function(){var name=qx.bom.client.CssTransform.getName();
+
+if(name!=null){return {"name":name,"style":qx.bom.client.CssTransform.getStyle(),"origin":qx.bom.client.CssTransform.getOrigin(),"3d":qx.bom.client.CssTransform.get3D(),"perspective":qx.bom.client.CssTransform.getPerspective(),"perspective-origin":qx.bom.client.CssTransform.getPerspectiveOrigin(),"backface-visibility":qx.bom.client.CssTransform.getBackFaceVisibility()};
+}return null;
+},getStyle:function(){return qx.bom.Style.getPropertyName("TransformStyle");
+},getPerspective:function(){return qx.bom.Style.getPropertyName("Perspective");
+},getPerspectiveOrigin:function(){return qx.bom.Style.getPropertyName("PerspectiveOrigin");
+},getBackFaceVisibility:function(){return qx.bom.Style.getPropertyName("BackfaceVisibility");
+},getOrigin:function(){return qx.bom.Style.getPropertyName("TransformOrigin");
+},getName:function(){return qx.bom.Style.getPropertyName("Transform");
+},get3D:function(){var div=document.createElement('div');
+var ret=false;
+var properties=["perspectiveProperty","WebkitPerspective","MozPerspective"];
+
+for(var i=properties.length-1;i>=0;i--){ret=ret?ret:div.style[properties[i]]!=undefined;
+}return ret;
+}},defer:function(statics){qx.core.Environment.add("css.transform",statics.getSupport);
+qx.core.Environment.add("css.transform.3d",statics.get3D);
+}});
 qx.Bootstrap.define("qx.bom.element.Transform",{statics:{__dimensions:["X","Y","Z"],__cssKeys:qx.core.Environment.get("css.transform"),transform:function(el,transforms){var transformCss=this.__mapToCss(transforms);
 var style=this.__cssKeys["name"];
 el.style[style]=transformCss;

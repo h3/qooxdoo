@@ -54,6 +54,7 @@
       "include" : 
       [
         "qx.bom.element.Animation"
+        ,"qx.bom.client.CssTransform"
       ],
       
       "exclude" :
