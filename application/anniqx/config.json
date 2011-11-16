@@ -1,4 +1,13 @@
 {
+  "include" : [
+    {
+      "path" : "${QOOXDOO_PATH}/tool/data/config/application.json",
+      "block" : [
+        "build"
+      ]
+    }
+  ],
+
   "let" :
   {
     "APPLICATION"  : "bom",
@@ -13,15 +22,15 @@
   {
     "build" :
     {
-      "log" : { 
+      "__log" : { 
         "filter" : { "debug" : [ "generator.code.DependencyLoader.*" ] },
         "dependencies" : { 
           "include-transitive-load-deps" : false,
           "force-fresh-deps" : true,
           "type" : "using",
           //"type" : "used-by",
-          //"format" : "txt",
-          "format" : "dot",
+          "format" : "txt",
+          //"format" : "dot",
           "dot" : { 
             //"root" : "qx.Class"
             "root" : "qx.bom.element.Animation"
@@ -54,7 +63,7 @@
       "include" : 
       [
         "qx.bom.element.Animation"
-        ,"qx.bom.client.CssTransform"
+        //,"qx.bom.client.CssTransform"
       ],
       
       "exclude" :
